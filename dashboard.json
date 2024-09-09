@@ -1,0 +1,2243 @@
+{
+    "__inputs": [
+      {
+        "name": "DS_STOCK-TEST-ENDPOINT",
+        "label": "stock-test-endpoint",
+        "description": "",
+        "type": "datasource",
+        "pluginId": "yesoreyeram-infinity-datasource",
+        "pluginName": "Infinity"
+      }
+    ],
+    "__elements": {},
+    "__requires": [
+      {
+        "type": "panel",
+        "id": "bargauge",
+        "name": "Bar gauge",
+        "version": ""
+      },
+      {
+        "type": "panel",
+        "id": "gauge",
+        "name": "Gauge",
+        "version": ""
+      },
+      {
+        "type": "grafana",
+        "id": "grafana",
+        "name": "Grafana",
+        "version": "11.1.1"
+      },
+      {
+        "type": "panel",
+        "id": "stat",
+        "name": "Stat",
+        "version": ""
+      },
+      {
+        "type": "panel",
+        "id": "text",
+        "name": "Text",
+        "version": ""
+      },
+      {
+        "type": "panel",
+        "id": "timeseries",
+        "name": "Time series",
+        "version": ""
+      },
+      {
+        "type": "datasource",
+        "id": "yesoreyeram-infinity-datasource",
+        "name": "Infinity",
+        "version": "2.9.5"
+      }
+    ],
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 22,
+        "panels": [],
+        "title": "Reading",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 0,
+          "y": 1
+        },
+        "id": 17,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Strength of trend from 0-100. Only indicates absolute strength, will be high regardless of whether stock is going up or down.\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "title": "ADX",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 1
+        },
+        "id": 19,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Pivot points indicate the price at which sentiment can change from bullish to bearish or vice versa. Typically, price falling below pivot indicates time to sell or short, price going above indicates time to buy or long.\n\nPivots are accompanied by support (S1, S2) and resistances (R1, R2). \n\nSupports are price points where demand for a stock will overwhelm its supply. When the price hits this point (always on a downtrend), the trend could potentially reverse. This is where you buy or long.\n\nResistances are price points where supply for a stock will overwhelm its demand. When the price hits this point (always on an uptrend), the trend could potentially reverse. This is where you short or sell.\n\nSupports and resistances are price points where you can bet on the direction of a price trend and quickly check if you're right.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "title": "Pivot Points, Support, Resistance",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 4
+        },
+        "id": 20,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Magnitude and speed of recent changes to a trend from 0-100. 70+ RSI indicates an overbought situation. 30- indicates an oversold condition. RSI can signal bullish or bearish trends.\n- Bullish: RSI hits a lower low than before while price hits a higher low than before.\n- Bearish: RSI hits a higher high than before while price hits a lower high than before.\n\nThe RSI can also diverge:\n- Bullish: RSI hits a higher low while price hits a lower low. Indicates time to long.\n- Bearish: RSI hits a lower high while price hits a higher high. Indicates time to short or sell.\n",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "title": "RSI",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 0,
+          "y": 11
+        },
+        "id": 21,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Helps to determine if a stock is close to being overbought or oversold. Low value means oversold, high value means overbought. If it goes up suddenly (-ve to +100), this can indicate an upward trend in price. If it suddenly goes down (+ve to -100), this can indicate a downwards trend. Each stock's trend reversal CCI values are different. Find trend reversal points on the price chart and match them to the CCI values.",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "title": "CCI",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "description": "",
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 12,
+          "y": 11
+        },
+        "id": 23,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "Follow indications from pivot points. If other metrics (2/3) support, execute action based on pivot points. When buying, put in limit orders for 1 support lower or use a stop-loss at 1 support lower. When selling, put in limit orders for 1 resistance higher.\n\nSupport/Resistance order: S2, S1, P, R1, R2",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "title": "Trading strategy",
+        "type": "text"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 16
+        },
+        "id": 10,
+        "panels": [],
+        "title": "Quick Metrics",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "dateTimeAsIso"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 17
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^Time$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "columns": [
+              {
+                "selector": "c",
+                "text": "Current",
+                "type": "number"
+              },
+              {
+                "selector": "h",
+                "text": "High",
+                "type": "number"
+              },
+              {
+                "selector": "l",
+                "text": "Low",
+                "type": "number"
+              },
+              {
+                "selector": "t",
+                "text": "Time",
+                "type": "timestamp_epoch_s"
+              },
+              {
+                "selector": "pc",
+                "text": "Previous Close",
+                "type": "number"
+              }
+            ],
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "filters": [],
+            "format": "table",
+            "global_query_id": "",
+            "refId": "A",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "http://127.0.0.1:5000/quote",
+            "url_options": {
+              "data": "",
+              "method": "GET",
+              "params": [
+                {
+                  "key": "symbol",
+                  "value": "$Symbol"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Last time of retrieval",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Pivot Point",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "High",
+                  "Low",
+                  "Previous Close"
+                ],
+                "reducer": "mean"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "from": -100000,
+                  "result": {
+                    "color": "yellow",
+                    "index": 0,
+                    "text": "Bearish"
+                  },
+                  "to": 0
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": -100000,
+                  "result": {
+                    "color": "green",
+                    "index": 1,
+                    "text": "Bearish"
+                  },
+                  "to": 0
+                },
+                "type": "range"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 17
+        },
+        "id": 18,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "/^Today Delta$/",
+            "values": true
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "columns": [
+              {
+                "selector": "historicaldata1open",
+                "text": "Open",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata4close",
+                "text": "Close",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata2high",
+                "text": "High",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata3low",
+                "text": "Low",
+                "type": "number"
+              },
+              {
+                "selector": "adxADX",
+                "text": "ADX",
+                "type": "number"
+              },
+              {
+                "selector": "rsiRSI",
+                "text": "RSI",
+                "type": "number"
+              },
+              {
+                "selector": "cciCCI",
+                "text": "CCI",
+                "type": "number"
+              },
+              {
+                "selector": "current",
+                "text": "Current",
+                "type": "number"
+              },
+              {
+                "selector": "S1",
+                "text": "S1",
+                "type": "number"
+              },
+              {
+                "selector": "open",
+                "text": "Current Open",
+                "type": "number"
+              }
+            ],
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "filters": [],
+            "format": "table",
+            "global_query_id": "",
+            "json_options": {
+              "columnar": false,
+              "root_is_not_array": true
+            },
+            "refId": "A",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "http://127.0.0.1:5000/stock/snapshot",
+            "url_options": {
+              "data": "",
+              "method": "GET",
+              "params": [
+                {
+                  "key": "symbol",
+                  "value": "$Symbol"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Quality",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Pivot Point",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Close",
+                  "High",
+                  "Low"
+                ],
+                "reducer": "mean"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Current Last",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Current"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Delta",
+              "binary": {
+                "left": "Current Last",
+                "operator": "-",
+                "right": "Pivot Point"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Last High",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "High"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Last Low",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Low"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Pivot*2",
+              "binary": {
+                "left": "Pivot Point",
+                "operator": "*",
+                "right": "2"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": "Last High",
+                "operator": "-",
+                "right": "Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "R1",
+              "binary": {
+                "left": "Pivot*2",
+                "operator": "-",
+                "right": "Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "R2",
+              "binary": {
+                "left": "Pivot Point",
+                "right": "Last High - Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "S1",
+              "binary": {
+                "left": "Pivot*2",
+                "operator": "-",
+                "right": "Last High"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "S2",
+              "binary": {
+                "left": "Pivot Point",
+                "operator": "-",
+                "right": "Last High - Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Today's Open",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Current Open"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Today Delta",
+              "binary": {
+                "left": "Current",
+                "operator": "-",
+                "right": "Today's Open"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "from": -100000,
+                  "result": {
+                    "color": "yellow",
+                    "index": 0,
+                    "text": "Short/Sell"
+                  },
+                  "to": 0
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 0,
+                  "result": {
+                    "color": "green",
+                    "index": 1,
+                    "text": "Long/Buy"
+                  },
+                  "to": 1000000
+                },
+                "type": "range"
+              }
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 17
+        },
+        "id": 12,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "horizontal",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [],
+            "fields": "/^Delta$/",
+            "values": true
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "columns": [
+              {
+                "selector": "historicaldata1open",
+                "text": "Open",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata4close",
+                "text": "Close",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata2high",
+                "text": "High",
+                "type": "number"
+              },
+              {
+                "selector": "historicaldata3low",
+                "text": "Low",
+                "type": "number"
+              },
+              {
+                "selector": "adxADX",
+                "text": "ADX",
+                "type": "number"
+              },
+              {
+                "selector": "rsiRSI",
+                "text": "RSI",
+                "type": "number"
+              },
+              {
+                "selector": "cciCCI",
+                "text": "CCI",
+                "type": "number"
+              },
+              {
+                "selector": "current",
+                "text": "Current",
+                "type": "number"
+              },
+              {
+                "selector": "S1",
+                "text": "S1",
+                "type": "number"
+              },
+              {
+                "selector": "open",
+                "text": "Current Open",
+                "type": "number"
+              }
+            ],
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "filters": [],
+            "format": "table",
+            "global_query_id": "",
+            "json_options": {
+              "columnar": false,
+              "root_is_not_array": true
+            },
+            "refId": "A",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "http://127.0.0.1:5000/stock/snapshot",
+            "url_options": {
+              "data": "",
+              "method": "GET",
+              "params": [
+                {
+                  "key": "symbol",
+                  "value": "$Symbol"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Action",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Pivot Point",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Close",
+                  "High",
+                  "Low"
+                ],
+                "reducer": "mean"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Current Last",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Current"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Delta",
+              "binary": {
+                "left": "Current Last",
+                "operator": "-",
+                "right": "Pivot Point"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Last High",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "High"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Last Low",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Low"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Pivot*2",
+              "binary": {
+                "left": "Pivot Point",
+                "operator": "*",
+                "right": "2"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "binary": {
+                "left": "Last High",
+                "operator": "-",
+                "right": "Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "R1",
+              "binary": {
+                "left": "Pivot*2",
+                "operator": "-",
+                "right": "Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "R2",
+              "binary": {
+                "left": "Pivot Point",
+                "right": "Last High - Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "S1",
+              "binary": {
+                "left": "Pivot*2",
+                "operator": "-",
+                "right": "Last High"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "S2",
+              "binary": {
+                "left": "Pivot Point",
+                "operator": "-",
+                "right": "Last High - Last Low"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Today's Open",
+              "mode": "reduceRow",
+              "reduce": {
+                "include": [
+                  "Current Open"
+                ],
+                "reducer": "lastNotNull"
+              }
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Today Delta",
+              "binary": {
+                "left": "Current",
+                "operator": "-",
+                "right": "Today's Open"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Dashboard --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "max": 500,
+            "min": -500,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 12,
+          "x": 12,
+          "y": 17
+        },
+        "id": 16,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "datasource",
+              "uid": "-- Dashboard --"
+            },
+            "panelId": 12,
+            "refId": "A",
+            "withTransforms": true
+          }
+        ],
+        "title": "Supports and Resistances",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "Pivot Point",
+                  "R1",
+                  "R2",
+                  "S1 2",
+                  "S2",
+                  "Current"
+                ]
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Dashboard --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "from": 0,
+                  "result": {
+                    "index": 0,
+                    "text": "Weak Trend"
+                  },
+                  "to": 25
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 25,
+                  "result": {
+                    "index": 1,
+                    "text": "Strong Trend"
+                  },
+                  "to": 50
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 50,
+                  "result": {
+                    "index": 2,
+                    "text": "Very Strong Trend"
+                  },
+                  "to": 75
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 75,
+                  "result": {
+                    "index": 3,
+                    "text": "Extremely Strong Trend"
+                  },
+                  "to": 100
+                },
+                "type": "range"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                },
+                {
+                  "color": "orange",
+                  "value": 25
+                },
+                {
+                  "color": "yellow",
+                  "value": 50
+                },
+                {
+                  "color": "green",
+                  "value": 75
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 0,
+          "y": 21
+        },
+        "id": 8,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 82,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^ADX$/",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "datasource",
+              "uid": "-- Dashboard --"
+            },
+            "panelId": 12,
+            "refId": "A",
+            "withTransforms": false
+          }
+        ],
+        "title": "ADX",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Dashboard --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [
+              {
+                "options": {
+                  "from": 0,
+                  "result": {
+                    "color": "green",
+                    "index": 0,
+                    "text": "Undervalued"
+                  },
+                  "to": 30
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 30,
+                  "result": {
+                    "color": "yellow",
+                    "index": 1,
+                    "text": "Fairly Valued"
+                  },
+                  "to": 70
+                },
+                "type": "range"
+              },
+              {
+                "options": {
+                  "from": 70,
+                  "result": {
+                    "color": "red",
+                    "index": 2,
+                    "text": "Overvalued"
+                  },
+                  "to": 100
+                },
+                "type": "range"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 30
+                },
+                {
+                  "color": "red",
+                  "value": 70
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 4,
+          "y": 21
+        },
+        "id": 13,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 82,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^RSI$/",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "datasource",
+              "uid": "-- Dashboard --"
+            },
+            "panelId": 12,
+            "refId": "A",
+            "withTransforms": false
+          }
+        ],
+        "title": "RSI",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Dashboard --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "max": 500,
+            "min": -500,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                },
+                {
+                  "color": "green",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 4,
+          "x": 8,
+          "y": 21
+        },
+        "id": 14,
+        "options": {
+          "minVizHeight": 75,
+          "minVizWidth": 82,
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^CCI$/",
+            "values": false
+          },
+          "showThresholdLabels": false,
+          "showThresholdMarkers": true,
+          "sizing": "auto"
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "datasource",
+              "uid": "-- Dashboard --"
+            },
+            "panelId": 12,
+            "refId": "A",
+            "withTransforms": false
+          }
+        ],
+        "title": "CCI",
+        "type": "gauge"
+      },
+      {
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "currencyUSD"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 12,
+          "x": 12,
+          "y": 21
+        },
+        "id": 6,
+        "options": {
+          "displayMode": "lcd",
+          "maxVizHeight": 300,
+          "minVizHeight": 16,
+          "minVizWidth": 8,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "text": {
+            "valueSize": 20
+          },
+          "valueMode": "text"
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "columns": [
+              {
+                "selector": "c",
+                "text": "Current",
+                "type": "number"
+              },
+              {
+                "selector": "h",
+                "text": "High",
+                "type": "number"
+              },
+              {
+                "selector": "l",
+                "text": "Low",
+                "type": "number"
+              },
+              {
+                "selector": "t",
+                "text": "Time",
+                "type": "timestamp_epoch_s"
+              },
+              {
+                "selector": "pc",
+                "text": "Previous Close",
+                "type": "number"
+              }
+            ],
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "filters": [],
+            "format": "table",
+            "global_query_id": "",
+            "refId": "A",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "http://127.0.0.1:5000/quote",
+            "url_options": {
+              "data": "",
+              "method": "GET",
+              "params": [
+                {
+                  "key": "symbol",
+                  "value": "$Symbol"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Price metrics",
+        "type": "bargauge"
+      },
+      {
+        "collapsed": true,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 26
+        },
+        "id": 9,
+        "panels": [
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 0,
+              "y": 16
+            },
+            "id": 1,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "1. open",
+                    "text": "Open",
+                    "type": "number"
+                  },
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "4. close",
+                    "text": "Close",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/historical_data",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "Open + Close",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "datasource",
+              "uid": "-- Dashboard --"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Open"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.hideFrom",
+                      "value": {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Close"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.hideFrom",
+                      "value": {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 12,
+              "y": 16
+            },
+            "id": 2,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": false
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "datasource",
+                  "uid": "-- Dashboard --"
+                },
+                "panelId": 1,
+                "refId": "A"
+              }
+            ],
+            "title": "Delta",
+            "transformations": [
+              {
+                "id": "calculateField",
+                "options": {
+                  "alias": "Delta",
+                  "binary": {
+                    "left": "Close",
+                    "operator": "-",
+                    "right": "Open"
+                  },
+                  "mode": "binary",
+                  "reduce": {
+                    "reducer": "sum"
+                  }
+                }
+              }
+            ],
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 0,
+              "y": 27
+            },
+            "id": 3,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "RSI",
+                    "text": "RSI",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/rsi",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "RSI",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 12,
+              "y": 27
+            },
+            "id": 4,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "ADX",
+                    "text": "ADX",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/adx",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "ADX",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 0,
+              "y": 38
+            },
+            "id": 5,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "CCI",
+                    "text": "CCI",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/cci",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "CCI",
+            "type": "timeseries"
+          }
+        ],
+        "title": "Detailed Graphs",
+        "type": "row"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "aapl",
+            "value": "aapl"
+          },
+          "hide": 0,
+          "label": "Symbol",
+          "name": "Symbol",
+          "options": [
+            {
+              "selected": true,
+              "text": "aapl",
+              "value": "aapl"
+            }
+          ],
+          "query": "aapl",
+          "skipUrlSync": false,
+          "type": "textbox"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Stock test dashboard",
+    "uid": "aduj5xzr1u1hcd",
+    "version": 16,
+    "weekStart": ""
+  }
