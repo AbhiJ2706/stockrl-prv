@@ -1,66 +1,56 @@
+from datetime import datetime
 import finnhub
 
 import json
-import os
-import re
 
-from inspect import getmembers, isfunction
-from dateutil.parser import parse as date_parse
-
-import pandas as pd
-
-import metrics
+from TechIndicators import TechIndicators
 
 import logging
+
+from TimeSeries import TimeSeries
 
 
 logger = logging.getLogger('server.sub')
 
 
-def retrieve_and_store_data(func, symbol):
-
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    if not os.path.exists(f"data/{symbol.lower()}"):
-        os.makedirs(f"data/{symbol.lower()}")
-
-    func(symbol)
+def finnhub_data(symbol):
+    finnhub_client = finnhub.Client(
+        api_key="crct279r01qkg0hdm2h0crct279r01qkg0hdm2hg")
+    return finnhub_client.quote(symbol.upper())
 
 
 def retrieve_snapshot(symbol):
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    if not os.path.exists(f"data/{symbol.lower()}"):
-        os.makedirs(f"data/{symbol.lower()}")
+    def harvest_data_from(metric, metric_name):
+        try:
+            data = metric().iloc[0]
+        except:
+            data = f"""{{ "{metric_name}": "no data" }}"""
+        data = json.loads(data if isinstance(data, str) else data.to_json())
+        return data.get(metric_name, data)
 
-    logging.debug(f"beginning snapshot for {symbol}")
+    logger.debug(f"beginning snapshot for {symbol}")
 
     snapshot = {}
-    pattern = re.compile('[\W]+')
 
-    for (metric_name, metric) in getmembers(metrics, isfunction):
-        logging.debug(f"retrieving {metric_name}")
+    ti = TechIndicators()
+    ts = TimeSeries()
+    data = ts.get_daily(symbol).iloc[0]
+    quote = finnhub_data(symbol)
 
-        if metric_name.startswith("get"):
-            retrieve_and_store_data(metric, symbol)
-
-            name = metric_name[4:]
-            data = pd.read_csv(f"data/{symbol.lower()}/{name}.csv").iloc[0]
-            snapshot[name] = json.loads(data.to_json())
-            if isinstance(snapshot[name], dict):
-                for (k, v) in snapshot[name].items():
-                    snapshot[pattern.sub('', name + k).replace("_", "")] = v
-                del snapshot[name]
-            date = date_parse(data.values[0])
-            snapshot["realdate"] = date if (snapshot.get(
-                "realdate") and date < snapshot["realdate"]) or not snapshot.get("realdate") else snapshot["realdate"]
-    
-    snapshot["realdate"] = str(snapshot["realdate"].date())
-
-    finnhub_client = finnhub.Client(
-        api_key="crct279r01qkg0hdm2h0crct279r01qkg0hdm2hg")
-    quote = finnhub_client.quote(symbol.upper())
+    snapshot["adx"] = harvest_data_from(lambda: ti.get_adx(symbol, intraday=True, time_period=3), "ADX")
+    snapshot["rsi"] = harvest_data_from(lambda: ti.get_rsi(symbol, intraday=True, time_period=4), "RSI")
+    snapshot["macd"] = harvest_data_from(lambda: ti.get_macd(symbol, intraday=True, window_slow=20), "MACD")
+    snapshot["macdsignal"] = harvest_data_from(lambda: ti.get_macd_signal(symbol, intraday=True, window_slow=20), "MACD_Signal")
+    snapshot["date"] = str(datetime.now())
     snapshot["current"] = quote["c"]
     snapshot["open"] = quote["o"]
+    snapshot["previousopen"] = data["1. open"]
+    snapshot["previousclose"] = data["4. close"]
+    snapshot["previoushigh"] = data["2. high"]
+    snapshot["previouslow"] = data["3. low"]
 
     return [snapshot]
+
+
+if __name__ == "__main__":
+    print(retrieve_snapshot("amzn"))

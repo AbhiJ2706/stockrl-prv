@@ -4,32 +4,36 @@ from dateutil.parser import parse as date_parse
 
 import logging
 
-from read_data import fetch_data, rotate_tech_indicators, rotate_time_series
+from read_data import fetch_data
+
+from TimeSeries import TimeSeries
+from TechIndicators import TechIndicators
 
 
 logger = logging.getLogger('server.sub')
 
 
-@rotate_time_series
-def get_historical_data(symbol, ts=None):
-    historical_data, write = fetch_data(symbol, lambda: ts.get_daily(
-        symbol=symbol, outputsize='full'), "historical_data")
+TIME_SERIES = TimeSeries()
+TECH_INDICATORS = TechIndicators()
+
+
+def get_historical_data(symbol):
+    global TIME_SERIES
+    historical_data, write = fetch_data(symbol, lambda: TIME_SERIES.get_daily(symbol), "historical_data")
 
     if historical_data is None:
         return
 
-    historical_data.index = historical_data.index.map(
-        lambda x: str(date_parse(x).date()))
+    historical_data.index = historical_data.index.map(lambda x: str(date_parse(x).date()))
     if write:
         historical_data.to_csv(f"data/{symbol.lower()}/historical_data.csv")
 
     return historical_data
 
 
-@rotate_tech_indicators
-def get_rsi(symbol, ti=None):
-    rsi, write = fetch_data(symbol, lambda: ti.get_rsi(symbol=symbol, interval='daily',
-                                                       time_period=14), "rsi")
+def get_rsi(symbol):
+    global TECH_INDICATORS
+    rsi, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_rsi(symbol), "rsi")
 
     if rsi is None:
         return
@@ -41,10 +45,9 @@ def get_rsi(symbol, ti=None):
     return rsi
 
 
-@rotate_tech_indicators
-def get_adx(symbol, ti=None):
-    adx, write = fetch_data(symbol, lambda: ti.get_adx(symbol=symbol, interval='daily',
-                                                       time_period=14), "adx")
+def get_adx(symbol):
+    global TECH_INDICATORS
+    adx, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_adx(symbol), "adx")
 
     if adx is None:
         return
@@ -56,10 +59,9 @@ def get_adx(symbol, ti=None):
     return adx
 
 
-@rotate_tech_indicators
-def get_cci(symbol, ti=None):
-    cci, write = fetch_data(symbol, lambda: ti.get_cci(symbol=symbol, interval='daily',
-                                                       time_period=14), "cci")
+def get_cci(symbol):
+    global TECH_INDICATORS
+    cci, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_cci(symbol), "cci")
 
     if cci is None:
         return
@@ -71,29 +73,47 @@ def get_cci(symbol, ti=None):
     return cci
 
 
-# @rotate_time_series
-# def get_sharpe_ratio(symbol, rfr=0.05, ts=None):
+def get_macd(symbol):
+    global TECH_INDICATORS
+    macd, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_macd(symbol), "macd")
 
-#     data, write = fetch_data(symbol, lambda: ts.get_daily(
-#         symbol=symbol, outputsize='full'), "historical_data")['4. close']
-#     daily_returns = data.pct_change().dropna()
+    if macd is None:
+        return
 
-#     excess_returns = daily_returns - rfr / 252
-#     sharpe_ratio = excess_returns.mean() / excess_returns.std() * np.sqrt(252)
+    macd.index = macd.index.map(lambda x: str(date_parse(x).date()))
+    if write:
+        macd.to_csv(f"data/{symbol.lower()}/macd.csv")
 
-#     if write: sharpe_ratio.to_csv(f"data/{symbol.lower()}/sharpe_ratio.csv")
-
-#     return sharpe_ratio
+    return macd
 
 
-# # @rotate_time_series
-# # def get_percentage_return(symbol, ts=None):
+def get_macd_signal(symbol):
+    global TECH_INDICATORS
+    macd, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_macd_signal(symbol), "macd_signal")
 
-# #     data, write = fetch_data(symbol, lambda: ts.get_daily(
-# #         symbol=symbol, outputsize='full'), "historical_data")['4. close']
+    if macd is None:
+        return
 
-# #     daily_returns = data.pct_change().dropna() * 100
+    macd.index = macd.index.map(lambda x: str(date_parse(x).date()))
+    if write:
+        macd.to_csv(f"data/{symbol.lower()}/macd_signal.csv")
 
-# #     if write: daily_returns.to_csv(f"data/{symbol.lower()}/percent_return.csv")
+    return macd
 
-# #     return daily_returns
+
+def get_ema(symbol):
+    global TECH_INDICATORS
+    ema, write = fetch_data(symbol, lambda: TECH_INDICATORS.get_ema(symbol), "ema")
+
+    if ema is None:
+        return
+
+    ema.index = ema.index.map(lambda x: str(date_parse(x).date()))
+    if write:
+        ema.to_csv(f"data/{symbol.lower()}/ema.csv")
+
+    return ema
+
+
+if __name__ == "__main__":
+    get_historical_data("amzn")

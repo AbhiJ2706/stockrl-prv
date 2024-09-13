@@ -77,7 +77,7 @@
     "links": [],
     "panels": [
       {
-        "collapsed": false,
+        "collapsed": true,
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -85,138 +85,139 @@
           "y": 0
         },
         "id": 22,
-        "panels": [],
+        "panels": [
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "description": "",
+            "gridPos": {
+              "h": 3,
+              "w": 12,
+              "x": 0,
+              "y": 1
+            },
+            "id": 17,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Strength of trend from 0-100. Only indicates absolute strength, will be high regardless of whether stock is going up or down.\n",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.1.1",
+            "title": "ADX",
+            "type": "text"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "gridPos": {
+              "h": 10,
+              "w": 12,
+              "x": 12,
+              "y": 1
+            },
+            "id": 19,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Pivot points indicate the price at which sentiment can change from bullish to bearish or vice versa. Typically, price falling below pivot indicates time to sell or short, price going above indicates time to buy or long.\n\nPivots are accompanied by support (S1, S2) and resistances (R1, R2). \n\nSupports are price points where demand for a stock will overwhelm its supply. When the price hits this point (always on a downtrend), the trend could potentially reverse. This is where you buy or long.\n\nResistances are price points where supply for a stock will overwhelm its demand. When the price hits this point (always on an uptrend), the trend could potentially reverse. This is where you short or sell.\n\nSupports and resistances are price points where you can bet on the direction of a price trend and quickly check if you're right.",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.1.1",
+            "title": "Pivot Points, Support, Resistance",
+            "type": "text"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "description": "",
+            "gridPos": {
+              "h": 7,
+              "w": 12,
+              "x": 0,
+              "y": 4
+            },
+            "id": 20,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Magnitude and speed of recent changes to a trend from 0-100. 70+ RSI indicates an overbought situation. 30- indicates an oversold condition. RSI can signal bullish or bearish trends.\n- Bullish: RSI hits a lower low than before while price hits a higher low than before.\n- Bearish: RSI hits a higher high than before while price hits a lower high than before.\n\nThe RSI can also diverge:\n- Bullish: RSI hits a higher low while price hits a lower low. Indicates time to long.\n- Bearish: RSI hits a lower high while price hits a higher high. Indicates time to short or sell.\n",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.1.1",
+            "title": "RSI",
+            "type": "text"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "description": "",
+            "gridPos": {
+              "h": 5,
+              "w": 12,
+              "x": 0,
+              "y": 11
+            },
+            "id": 21,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Helps to determine if a stock is close to being overbought or oversold. Low value means oversold, high value means overbought. If it goes up suddenly (-ve to +100), this can indicate an upward trend in price. If it suddenly goes down (+ve to -100), this can indicate a downwards trend. Each stock's trend reversal CCI values are different. Find trend reversal points on the price chart and match them to the CCI values.",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.1.1",
+            "title": "CCI",
+            "type": "text"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "description": "",
+            "gridPos": {
+              "h": 5,
+              "w": 12,
+              "x": 12,
+              "y": 11
+            },
+            "id": 23,
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "Follow indications from pivot points. If other metrics (2/3) support, execute action based on pivot points. When buying, put in limit orders for 1 support lower or use a stop-loss at 1 support lower. When selling, put in limit orders for 1 resistance higher.\n\nSupport/Resistance order: S2, S1, P, R1, R2",
+              "mode": "markdown"
+            },
+            "pluginVersion": "11.1.1",
+            "title": "Trading strategy",
+            "type": "text"
+          }
+        ],
         "title": "Reading",
         "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
-        },
-        "description": "",
-        "gridPos": {
-          "h": 3,
-          "w": 12,
-          "x": 0,
-          "y": 1
-        },
-        "id": 17,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "Strength of trend from 0-100. Only indicates absolute strength, will be high regardless of whether stock is going up or down.\n",
-          "mode": "markdown"
-        },
-        "pluginVersion": "11.1.1",
-        "title": "ADX",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 12,
-          "x": 12,
-          "y": 1
-        },
-        "id": 19,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "Pivot points indicate the price at which sentiment can change from bullish to bearish or vice versa. Typically, price falling below pivot indicates time to sell or short, price going above indicates time to buy or long.\n\nPivots are accompanied by support (S1, S2) and resistances (R1, R2). \n\nSupports are price points where demand for a stock will overwhelm its supply. When the price hits this point (always on a downtrend), the trend could potentially reverse. This is where you buy or long.\n\nResistances are price points where supply for a stock will overwhelm its demand. When the price hits this point (always on an uptrend), the trend could potentially reverse. This is where you short or sell.\n\nSupports and resistances are price points where you can bet on the direction of a price trend and quickly check if you're right.",
-          "mode": "markdown"
-        },
-        "pluginVersion": "11.1.1",
-        "title": "Pivot Points, Support, Resistance",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
-        },
-        "description": "",
-        "gridPos": {
-          "h": 7,
-          "w": 12,
-          "x": 0,
-          "y": 4
-        },
-        "id": 20,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "Magnitude and speed of recent changes to a trend from 0-100. 70+ RSI indicates an overbought situation. 30- indicates an oversold condition. RSI can signal bullish or bearish trends.\n- Bullish: RSI hits a lower low than before while price hits a higher low than before.\n- Bearish: RSI hits a higher high than before while price hits a lower high than before.\n\nThe RSI can also diverge:\n- Bullish: RSI hits a higher low while price hits a lower low. Indicates time to long.\n- Bearish: RSI hits a lower high while price hits a higher high. Indicates time to short or sell.\n",
-          "mode": "markdown"
-        },
-        "pluginVersion": "11.1.1",
-        "title": "RSI",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
-        },
-        "description": "",
-        "gridPos": {
-          "h": 5,
-          "w": 12,
-          "x": 0,
-          "y": 11
-        },
-        "id": 21,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "Helps to determine if a stock is close to being overbought or oversold. Low value means oversold, high value means overbought. If it goes up suddenly (-ve to +100), this can indicate an upward trend in price. If it suddenly goes down (+ve to -100), this can indicate a downwards trend. Each stock's trend reversal CCI values are different. Find trend reversal points on the price chart and match them to the CCI values.",
-          "mode": "markdown"
-        },
-        "pluginVersion": "11.1.1",
-        "title": "CCI",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
-        },
-        "description": "",
-        "gridPos": {
-          "h": 5,
-          "w": 12,
-          "x": 12,
-          "y": 11
-        },
-        "id": 23,
-        "options": {
-          "code": {
-            "language": "plaintext",
-            "showLineNumbers": false,
-            "showMiniMap": false
-          },
-          "content": "Follow indications from pivot points. If other metrics (2/3) support, execute action based on pivot points. When buying, put in limit orders for 1 support lower or use a stop-loss at 1 support lower. When selling, put in limit orders for 1 resistance higher.\n\nSupport/Resistance order: S2, S1, P, R1, R2",
-          "mode": "markdown"
-        },
-        "pluginVersion": "11.1.1",
-        "title": "Trading strategy",
-        "type": "text"
       },
       {
         "collapsed": false,
@@ -224,7 +225,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 16
+          "y": 1
         },
         "id": 10,
         "panels": [],
@@ -233,8 +234,8 @@
       },
       {
         "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_STOCK-TEST-ENDPOINT}"
+          "type": "datasource",
+          "uid": "-- Dashboard --"
         },
         "fieldConfig": {
           "defaults": {
@@ -254,13 +255,21 @@
             },
             "unit": "dateTimeAsIso"
           },
-          "overrides": []
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Date"
+              },
+              "properties": []
+            }
+          ]
         },
         "gridPos": {
           "h": 4,
           "w": 4,
           "x": 0,
-          "y": 17
+          "y": 2
         },
         "id": 7,
         "options": {
@@ -273,7 +282,7 @@
             "calcs": [
               "lastNotNull"
             ],
-            "fields": "/^Time$/",
+            "fields": "/^Date$/",
             "values": false
           },
           "showPercentChange": false,
@@ -283,55 +292,12 @@
         "pluginVersion": "11.1.1",
         "targets": [
           {
-            "columns": [
-              {
-                "selector": "c",
-                "text": "Current",
-                "type": "number"
-              },
-              {
-                "selector": "h",
-                "text": "High",
-                "type": "number"
-              },
-              {
-                "selector": "l",
-                "text": "Low",
-                "type": "number"
-              },
-              {
-                "selector": "t",
-                "text": "Time",
-                "type": "timestamp_epoch_s"
-              },
-              {
-                "selector": "pc",
-                "text": "Previous Close",
-                "type": "number"
-              }
-            ],
             "datasource": {
-              "type": "yesoreyeram-infinity-datasource",
-              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+              "type": "datasource",
+              "uid": "-- Dashboard --"
             },
-            "filters": [],
-            "format": "table",
-            "global_query_id": "",
-            "refId": "A",
-            "root_selector": "",
-            "source": "url",
-            "type": "json",
-            "url": "http://127.0.0.1:5000/quote",
-            "url_options": {
-              "data": "",
-              "method": "GET",
-              "params": [
-                {
-                  "key": "symbol",
-                  "value": "$Symbol"
-                }
-              ]
-            }
+            "panelId": 12,
+            "refId": "A"
           }
         ],
         "title": "Last time of retrieval",
@@ -380,13 +346,13 @@
               },
               {
                 "options": {
-                  "from": -100000,
+                  "from": 0,
                   "result": {
                     "color": "green",
                     "index": 1,
-                    "text": "Bearish"
+                    "text": "Bullish"
                   },
-                  "to": 0
+                  "to": 100000
                 },
                 "type": "range"
               }
@@ -407,7 +373,7 @@
           "h": 4,
           "w": 4,
           "x": 4,
-          "y": 17
+          "y": 2
         },
         "id": 18,
         "options": {
@@ -751,7 +717,7 @@
           "h": 4,
           "w": 4,
           "x": 8,
-          "y": 17
+          "y": 2
         },
         "id": 12,
         "options": {
@@ -774,38 +740,33 @@
           {
             "columns": [
               {
-                "selector": "historicaldata1open",
+                "selector": "previousopen",
                 "text": "Open",
                 "type": "number"
               },
               {
-                "selector": "historicaldata4close",
+                "selector": "previousclose",
                 "text": "Close",
                 "type": "number"
               },
               {
-                "selector": "historicaldata2high",
+                "selector": "previoushigh",
                 "text": "High",
                 "type": "number"
               },
               {
-                "selector": "historicaldata3low",
+                "selector": "previouslow",
                 "text": "Low",
                 "type": "number"
               },
               {
-                "selector": "adxADX",
+                "selector": "adx",
                 "text": "ADX",
                 "type": "number"
               },
               {
-                "selector": "rsiRSI",
+                "selector": "rsi",
                 "text": "RSI",
-                "type": "number"
-              },
-              {
-                "selector": "cciCCI",
-                "text": "CCI",
                 "type": "number"
               },
               {
@@ -814,14 +775,24 @@
                 "type": "number"
               },
               {
-                "selector": "S1",
-                "text": "S1",
-                "type": "number"
-              },
-              {
                 "selector": "open",
                 "text": "Current Open",
                 "type": "number"
+              },
+              {
+                "selector": "macd",
+                "text": "MACD",
+                "type": "number"
+              },
+              {
+                "selector": "macdsignal",
+                "text": "MACD Signal",
+                "type": "number"
+              },
+              {
+                "selector": "date",
+                "text": "Date",
+                "type": "timestamp"
               }
             ],
             "datasource": {
@@ -852,7 +823,7 @@
             }
           }
         ],
-        "title": "Action",
+        "title": "Expected Action From Shareholders",
         "transformations": [
           {
             "id": "calculateField",
@@ -1076,7 +1047,7 @@
           "h": 4,
           "w": 12,
           "x": 12,
-          "y": 17
+          "y": 2
         },
         "id": 16,
         "options": {
@@ -1115,12 +1086,13 @@
             "options": {
               "include": {
                 "names": [
+                  "Current",
                   "Pivot Point",
                   "R1",
                   "R2",
                   "S1 2",
                   "S2",
-                  "Current"
+                  "Today's Open"
                 ]
               }
             }
@@ -1199,10 +1171,6 @@
                   "value": 0
                 },
                 {
-                  "color": "orange",
-                  "value": 25
-                },
-                {
                   "color": "yellow",
                   "value": 50
                 },
@@ -1219,7 +1187,7 @@
           "h": 5,
           "w": 4,
           "x": 0,
-          "y": 21
+          "y": 6
         },
         "id": 8,
         "options": {
@@ -1316,11 +1284,11 @@
                 },
                 {
                   "color": "yellow",
-                  "value": 30
+                  "value": 20
                 },
                 {
                   "color": "red",
-                  "value": 70
+                  "value": 80
                 }
               ]
             }
@@ -1331,7 +1299,7 @@
           "h": 5,
           "w": 4,
           "x": 4,
-          "y": 21
+          "y": 6
         },
         "id": 13,
         "options": {
@@ -1374,10 +1342,10 @@
             "color": {
               "mode": "thresholds"
             },
-            "decimals": 2,
+            "decimals": 4,
             "mappings": [],
-            "max": 500,
-            "min": -500,
+            "max": 3,
+            "min": -3,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -1398,7 +1366,7 @@
           "h": 5,
           "w": 4,
           "x": 8,
-          "y": 21
+          "y": 6
         },
         "id": 14,
         "options": {
@@ -1409,7 +1377,7 @@
             "calcs": [
               "lastNotNull"
             ],
-            "fields": "/^CCI$/",
+            "fields": "/^MACD Diff$/",
             "values": false
           },
           "showThresholdLabels": false,
@@ -1428,7 +1396,28 @@
             "withTransforms": false
           }
         ],
-        "title": "CCI",
+        "title": "MACD Diff",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "MACD Diff",
+              "binary": {
+                "left": "MACD",
+                "operator": "-",
+                "right": "MACD Signal"
+              },
+              "mode": "binary",
+              "reduce": {
+                "include": [
+                  "MACD",
+                  "MACD Signal"
+                ],
+                "reducer": "sum"
+              }
+            }
+          }
+        ],
         "type": "gauge"
       },
       {
@@ -1460,7 +1449,7 @@
           "h": 5,
           "w": 12,
           "x": 12,
-          "y": 21
+          "y": 6
         },
         "id": 6,
         "options": {
@@ -1547,7 +1536,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 26
+          "y": 11
         },
         "id": 9,
         "panels": [
@@ -1614,7 +1603,7 @@
               "h": 11,
               "w": 12,
               "x": 0,
-              "y": 16
+              "y": 12
             },
             "id": 1,
             "options": {
@@ -1683,148 +1672,6 @@
           },
           {
             "datasource": {
-              "type": "datasource",
-              "uid": "-- Dashboard --"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "linear",
-                  "lineWidth": 1,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                }
-              },
-              "overrides": [
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Open"
-                  },
-                  "properties": [
-                    {
-                      "id": "custom.hideFrom",
-                      "value": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": true
-                      }
-                    }
-                  ]
-                },
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Close"
-                  },
-                  "properties": [
-                    {
-                      "id": "custom.hideFrom",
-                      "value": {
-                        "legend": false,
-                        "tooltip": false,
-                        "viz": true
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-            "gridPos": {
-              "h": 11,
-              "w": 12,
-              "x": 12,
-              "y": 16
-            },
-            "id": 2,
-            "options": {
-              "legend": {
-                "calcs": [],
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": false
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "11.1.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "datasource",
-                  "uid": "-- Dashboard --"
-                },
-                "panelId": 1,
-                "refId": "A"
-              }
-            ],
-            "title": "Delta",
-            "transformations": [
-              {
-                "id": "calculateField",
-                "options": {
-                  "alias": "Delta",
-                  "binary": {
-                    "left": "Close",
-                    "operator": "-",
-                    "right": "Open"
-                  },
-                  "mode": "binary",
-                  "reduce": {
-                    "reducer": "sum"
-                  }
-                }
-              }
-            ],
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
               "type": "yesoreyeram-infinity-datasource",
               "uid": "${DS_STOCK-TEST-ENDPOINT}"
             },
@@ -1885,8 +1732,135 @@
             "gridPos": {
               "h": 11,
               "w": 12,
+              "x": 12,
+              "y": 12
+            },
+            "id": 25,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "EMA",
+                    "text": "EMA",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/ema",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "EMA",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "max": 100,
+                "min": 0,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
               "x": 0,
-              "y": 27
+              "y": 23
             },
             "id": 3,
             "options": {
@@ -1991,6 +1965,8 @@
                   }
                 },
                 "mappings": [],
+                "max": 100,
+                "min": 0,
                 "thresholds": {
                   "mode": "absolute",
                   "steps": [
@@ -2011,7 +1987,7 @@
               "h": 11,
               "w": 12,
               "x": 12,
-              "y": 27
+              "y": 23
             },
             "id": 4,
             "options": {
@@ -2116,6 +2092,8 @@
                   }
                 },
                 "mappings": [],
+                "max": 250,
+                "min": -250,
                 "thresholds": {
                   "mode": "absolute",
                   "steps": [
@@ -2136,7 +2114,7 @@
               "h": 11,
               "w": 12,
               "x": 0,
-              "y": 38
+              "y": 34
             },
             "id": 5,
             "options": {
@@ -2197,6 +2175,170 @@
             ],
             "title": "CCI",
             "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "yesoreyeram-infinity-datasource",
+              "uid": "${DS_STOCK-TEST-ENDPOINT}"
+            },
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisBorderShow": false,
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "insertNulls": false,
+                  "lineInterpolation": "linear",
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "max": 20,
+                "min": -20,
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 11,
+              "w": 12,
+              "x": 12,
+              "y": 34
+            },
+            "id": 24,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "11.1.1",
+            "targets": [
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "MACD",
+                    "text": "MACD",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "timeseries",
+                "global_query_id": "",
+                "json_options": {
+                  "columnar": false,
+                  "root_is_not_array": false
+                },
+                "parser": "simple",
+                "refId": "A",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/macd",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              },
+              {
+                "columns": [
+                  {
+                    "selector": "date",
+                    "text": "timestamp",
+                    "type": "timestamp"
+                  },
+                  {
+                    "selector": "MACD_Signal",
+                    "text": "Signal",
+                    "type": "number"
+                  }
+                ],
+                "datasource": {
+                  "type": "yesoreyeram-infinity-datasource",
+                  "uid": "${DS_STOCK-TEST-ENDPOINT}"
+                },
+                "filters": [],
+                "format": "table",
+                "global_query_id": "",
+                "hide": false,
+                "refId": "B",
+                "root_selector": "",
+                "source": "url",
+                "type": "json",
+                "url": "http://127.0.0.1:5000/stock/macd_signal",
+                "url_options": {
+                  "data": "",
+                  "method": "GET",
+                  "params": [
+                    {
+                      "key": "symbol",
+                      "value": "$Symbol"
+                    }
+                  ]
+                }
+              }
+            ],
+            "title": "MACD",
+            "type": "timeseries"
           }
         ],
         "title": "Detailed Graphs",
@@ -2211,8 +2353,8 @@
         {
           "current": {
             "selected": false,
-            "text": "aapl",
-            "value": "aapl"
+            "text": "amzn",
+            "value": "amzn"
           },
           "hide": 0,
           "label": "Symbol",
@@ -2220,11 +2362,11 @@
           "options": [
             {
               "selected": true,
-              "text": "aapl",
-              "value": "aapl"
+              "text": "amzn",
+              "value": "amzn"
             }
           ],
-          "query": "aapl",
+          "query": "amzn",
           "skipUrlSync": false,
           "type": "textbox"
         }
@@ -2238,6 +2380,6 @@
     "timezone": "utc",
     "title": "Stock test dashboard",
     "uid": "aduj5xzr1u1hcd",
-    "version": 16,
+    "version": 22,
     "weekStart": ""
   }
